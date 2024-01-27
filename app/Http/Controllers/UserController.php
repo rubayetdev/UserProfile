@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TaskSave;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,6 +42,19 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('user',['id'=>$user]);
+    }
+
+    public function insertTask(Request $request)
+    {
+        TaskSave::insert([
+            'user_id' =>$request->input('id'),
+            'title' =>$request->input('title'),
+            'description' =>$request->input('description'),
+            'created_at' =>Carbon::now('Asia/Dhaka'),
+            'updated_at' =>Carbon::now('Asia/Dhaka'),
+        ]);
+
+        return redirect()->back();
     }
 
 

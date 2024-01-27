@@ -23,3 +23,5 @@ Route::post('/insert',[UserController::class,'store'])->name('insert');
 Route::post('/login',[UserController::class,'login'])->name('login');
 
 Route::get('/user/{id}',[UserController::class,'userpage'])->name('user');
+
+Route::post('/insert',[UserController::class,'insertTask'])->name('insert');
